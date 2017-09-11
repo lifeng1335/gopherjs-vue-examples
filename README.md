@@ -19,15 +19,15 @@ for example, run cmd under $GOPATH
 then open `examples/markdown/index.html` in browser
 
 ## Implement [10/12]
-- [✓] Markdown Editor
-- [✓] GitHub Commits
-- [✓] Grid Component
-- [✓] Tree View
-- [✓] SVG Graph
-- [✓] Modal Component
-- [✓] Elastic Header
-- [✓] Wrapper Component
-- [✗] Realtime with deepstreamHub
-- [✓] Firebase + Validation
-- [✓] TodoMVC
-- [✗] HackerNews Clone
+- ✅ Markdown Editor
+- ✅ GitHub Commits
+- ✅ Grid Component
+- ✅ Tree View
+- ✅ SVG Graph
+- ✅ Modal Component
+- ✅ Elastic Header
+- ✅ Wrapper Component
+- ❌ Realtime with deepstreamHub
+- ✅ Firebase + Validation
+- ✅ TodoMVC
+- ❌ HackerNews Clone
