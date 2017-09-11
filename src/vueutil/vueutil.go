@@ -17,3 +17,23 @@ func PropsData(vm *vue.ViewModel) *js.Object {
 func GetTemplateById(ElementId string) string {
 	return js.Global.Get("document").Call("getElementById", ElementId).Get("innerText").String()
 }
+
+func AddWatch(o *vue.Option, name string, fn func(vm *vue.ViewModel, newVal *js.Object, oldVal *js.Object)) *vue.Option {
+	obj := js.Global.Get("Object").New()
+	obj.Set("handler", js.MakeFunc(func(this *js.Object, arguments []*js.Object) interface{} {
+		vm := &vue.ViewModel{
+			Object: this,
+		}
+		fn(vm, arguments[0], arguments[1])
+		return nil
+	}))
+	obj.Set("deep", false)
+
+	watch := js.Global.Get("Object").New()
+	watch.Set(name, obj)
+	return o.Mixin(
+		js.M{
+			"watch": watch,
+		},
+	)
+}
