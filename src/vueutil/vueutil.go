@@ -13,3 +13,7 @@ func PropsData(vm *vue.ViewModel) *js.Object {
 	}
 	return obj
 }
+
+func GetTemplateById(ElementId string) string {
+	return js.Global.Get("document").Call("getElementById", ElementId).Get("innerText").String()
+}
