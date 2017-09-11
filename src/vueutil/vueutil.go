@@ -18,6 +18,10 @@ func GetTemplateById(ElementId string) string {
 	return js.Global.Get("document").Call("getElementById", ElementId).Get("innerText").String()
 }
 
+func EmptyDataFunc() interface{} {
+	return js.Global.Get("Object").New()
+}
+
 func AddWatch(o *vue.Option, name string, fn func(vm *vue.ViewModel, newVal *js.Object, oldVal *js.Object)) *vue.Option {
 	obj := js.Global.Get("Object").New()
 	obj.Set("handler", js.MakeFunc(func(this *js.Object, arguments []*js.Object) interface{} {
