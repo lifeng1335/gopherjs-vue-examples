@@ -17,13 +17,13 @@ type AppProps struct {
 }
 
 type App struct {
-	Date  *AppData
+	Data  *AppData
 	Props *AppProps
 }
 
 func NewApp(vm *vue.ViewModel) *App {
 	return &App{
-		Date: &AppData{
+		Data: &AppData{
 			Object: vm.Data,
 		},
 		Props: &AppProps{
@@ -33,9 +33,9 @@ func NewApp(vm *vue.ViewModel) *App {
 }
 
 func (app *App) SyncViewModel(vm *vue.ViewModel) {
-	keys := js.Keys(app.Date.Object)
+	keys := js.Keys(app.Data.Object)
 	for _, v := range keys {
-		vm.Data.Set(v, app.Date.Get(v))
+		vm.Data.Set(v, app.Data.Get(v))
 	}
 	vm.Get("$options").Set("propsData", app.Props.Object)
 }
@@ -70,9 +70,9 @@ func (app *App) Update(event *js.Object) {
 	//lodash.Call("debounce", func() {
 	//	m.Input = event.Get("target").Get("value").String()
 	//}, 300)
-	app.Date.Input = event.Get("target").Get("value").String()
+	app.Data.Input = event.Get("target").Get("value").String()
 }
 
 func (app *App) CompiledMarkdown() *js.Object {
-	return js.Global.Call("marked", app.Date.Input, `{ sanitize: true }`)
+	return js.Global.Call("marked", app.Data.Input, `{ sanitize: true }`)
 }
