@@ -18,7 +18,7 @@ for example, run cmd under $GOPATH
 
 then open `examples/markdown/index.html` in browser
 
-## Implement [1/12]
+## Implement [2/12]
 - [✓] Markdown Editor
 - [✗] GitHub Commits
 - [✗] Grid Component
