@@ -104,7 +104,7 @@ type AppProps struct {
 }
 
 type App struct {
-	Date  *AppData
+	Data  *AppData
 	Props *AppProps
 }
 
@@ -120,7 +120,7 @@ func NewAppData() interface{} {
 
 func NewApp(vm *vue.ViewModel) *App {
 	return &App{
-		Date: &AppData{
+		Data: &AppData{
 			Object: vm.Data,
 		},
 		Props: &AppProps{
@@ -132,18 +132,18 @@ func NewApp(vm *vue.ViewModel) *App {
 func (app *App) SyncViewModel(vm *vue.ViewModel) {
 	// [Vue warn]: Avoid replacing instance root $data. Use nested data properties instead.
 	//vm.Data = t.Date.Object
-	keys := js.Keys(app.Date.Object)
+	keys := js.Keys(app.Data.Object)
 	for _, v := range keys {
-		vm.Data.Set(v, app.Date.Get(v))
+		vm.Data.Set(v, app.Data.Get(v))
 	}
 	vm.Get("$options").Set("propsData", app.Props.Object)
 }
 
 func (app *App) FetchData() {
 	url := `https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=`
-	fmt.Println(url, app.Date.CurrentBranch)
+	fmt.Println(url, app.Data.CurrentBranch)
 
-	resp, err := http.Get(url + app.Date.CurrentBranch)
+	resp, err := http.Get(url + app.Data.CurrentBranch)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -174,7 +174,7 @@ func (app *App) FetchData() {
 		C.CommitAuthorDate = formatDate(g.Commit.Author.Date)
 		Commits = append(Commits, C)
 	}
-	app.Date.Commits = Commits
+	app.Data.Commits = Commits
 }
 
 func formatDate(Date time.Time) string {
