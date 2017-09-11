@@ -41,3 +41,33 @@ func AddWatch(o *vue.Option, name string, fn func(vm *vue.ViewModel, newVal *js.
 		},
 	)
 }
+
+func AddMounted(o *vue.Option, fn func(vm *vue.ViewModel)) *vue.Option {
+	mounted := js.MakeFunc(func(this *js.Object, arguments []*js.Object) interface{} {
+		vm := &vue.ViewModel{
+			Object: this,
+		}
+		fn(vm)
+		return nil
+	})
+	return o.Mixin(
+		js.M{
+			"mounted": mounted,
+		},
+	)
+}
+
+func AddDestroyed(o *vue.Option, fn func(vm *vue.ViewModel)) *vue.Option {
+	destroyed := js.MakeFunc(func(this *js.Object, arguments []*js.Object) interface{} {
+		vm := &vue.ViewModel{
+			Object: this,
+		}
+		fn(vm)
+		return nil
+	})
+	return o.Mixin(
+		js.M{
+			"destroyed": destroyed,
+		},
+	)
+}
