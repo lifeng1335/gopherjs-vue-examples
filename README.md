@@ -20,7 +20,7 @@ then open `examples/markdown/index.html` in browser
 
 ## Implement [2/12]
 - [✓] Markdown Editor
-- [✗] GitHub Commits
+- [✓] GitHub Commits
 - [✗] Grid Component
 - [✗] Tree View
 - [✗] SVG Graph
