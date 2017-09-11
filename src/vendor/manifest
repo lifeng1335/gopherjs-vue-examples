@@ -154,6 +154,30 @@
 			"notests": true
 		},
 		{
+			"importpath": "github.com/oskca/gopherjs-dom",
+			"repository": "https://github.com/oskca/gopherjs-dom",
+			"vcs": "git",
+			"revision": "32ec7beb35cf955fdc223ba03621f12e490edc7d",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/oskca/gopherjs-json",
+			"repository": "https://github.com/oskca/gopherjs-json",
+			"vcs": "git",
+			"revision": "fa80e2036d4607f8e17dc282b2da430890efc116",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/oskca/gopherjs-vue",
+			"repository": "https://github.com/oskca/gopherjs-vue",
+			"vcs": "git",
+			"revision": "ab40c9e57345d35375c820c8e885d28ed70f165e",
+			"branch": "master",
+			"notests": true
+		},
+		{
 			"importpath": "github.com/pelletier/go-toml",
 			"repository": "https://github.com/pelletier/go-toml",
 			"vcs": "git",
